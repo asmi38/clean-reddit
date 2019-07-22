@@ -21,19 +21,25 @@ reddit = praw.Reddit(client_id=clientId,
                      user_agent=userAgent,
                      username=userName)
 
-def editComments(link):
-    comment = reddit.comment(id=link)
-    newMessage = "test"     #message that will replace your history
-    comment.edit(newMessage)
-
-def getPosts(username):
+def getComments(username):
     link = ("https://api.pushshift.io/reddit/search/comment/?author=" + username)
     r = requests.get(link).json()
     comments = r['data']
     return comments
 
+def editComments(link):
+    comment = reddit.comment(id=link)
+    newMessage = "new comment here"
+    comment.edit(newMessage)
+
+def deleteComents(link):
+    comment = reddit.comment(id=link)
+    comment.delete()
+
+def exportComment(link):
+
 def editBulkComments(username):
-    comments = getPosts(username)
+    comments = getComments(username)
     length = len(comments)
     for data in comments:
         print(data['id'])
