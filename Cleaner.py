@@ -35,10 +35,21 @@ def deleteComents(link):
     comment = reddit.comment(id=link)
     comment.delete()
 
-def exportComment(link):
+def exportComment(comment):
+    values = ['author', 'subreddit', 'body']
+    comment_data = open('CommentData.csv', 'w') #open file for writing
+    csvwriter = csv.writer(comment_data)
+    for x in values:
+        print(comment[x])
+        csvwriter.writerow(comment[x])
+
+    comment_data.close()
 
 def editBulkComments(username):
     comments = getComments(username)
     length = len(comments)
     for data in comments:
         print(data['id'])
+        exportComment(data)
+
+editBulkComments(uesrName)
