@@ -1,5 +1,8 @@
 import praw
 import requests
+import configparser
+config = configparser.ConfigParser()
+config.read("config.ini")
 
 #export
 #automate
@@ -8,18 +11,14 @@ import requests
 #delete
 #submissions
 
-clientId = ""
-clientSecret = ""
-userAgent = ""
-userName = ""
-pw = ""
 
 #connecting to reddit via praw
-reddit = praw.Reddit(client_id=clientId,
-                     client_secret=clientSecret,
-                     password=pw,
-                     user_agent=userAgent,
-                     username=userName)
+reddit = praw.Reddit(client_id=config.get("connection", "client_id"),
+                     client_secret=config.get("connection", "client_secret"),
+                     password=config.get("connection", "password"),
+                     user_agent=config.get("connection", "user_agent"),
+                     username=config.get("connection", "username"))
+
 
 def getComments(username):
     link = ("https://api.pushshift.io/reddit/search/comment/?author=" + username)
