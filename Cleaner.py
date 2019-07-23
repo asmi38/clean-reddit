@@ -1,16 +1,14 @@
 import praw
 import requests
+import csv
 import configparser
 config = configparser.ConfigParser()
 config.read("config.ini")
 
-#export
 #automate
 #whitelist by gilded,subreddit,content,score,awards
-#cmd or gui
 #delete
 #submissions
-
 
 #connecting to reddit via praw
 reddit = praw.Reddit(client_id=config.get("connection", "client_id"),
@@ -19,37 +17,37 @@ reddit = praw.Reddit(client_id=config.get("connection", "client_id"),
                      user_agent=config.get("connection", "user_agent"),
                      username=config.get("connection", "username"))
 
-
-def getComments(username):
+def get_comments(username):
     link = ("https://api.pushshift.io/reddit/search/comment/?author=" + username)
     r = requests.get(link).json()
     comments = r['data']
     return comments
 
-def editComments(link):
+def edit_comments(link):
     comment = reddit.comment(id=link)
     newMessage = "new comment here"
     comment.edit(newMessage)
 
-def deleteComents(link):
+def delete_coments(link):
     comment = reddit.comment(id=link)
     comment.delete()
 
-def exportComment(comment):
-    values = ['author', 'subreddit', 'body']
-    comment_data = open('CommentData.csv', 'w') #open file for writing
+def export_comment(comment):
+    values = [comment['author'], comment['subreddit'], comment['body']]
+    comment_data = open('CommentData.csv', 'a') #open file for writing
     csvwriter = csv.writer(comment_data)
-    for x in values:
-        print(comment[x])
-        csvwriter.writerow(comment[x])
-
+    csvwriter.writerow(values)
     comment_data.close()
 
-def editBulkComments(username):
-    comments = getComments(username)
+def white_list():
+
+
+def edit_bulk_comments(username):
+    comments = get_comments(username)
     length = len(comments)
+    print(length)
     for data in comments:
         print(data['id'])
-        exportComment(data)
+        export_comment(data)
 
-editBulkComments(uesrName)
+edit_bulk_comments("ypmihc400")
