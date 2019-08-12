@@ -5,20 +5,18 @@ import configparser
 
 config = configparser.ConfigParser()
 config.read("config.ini")
-
-# TODO: automate
+# TODO: cron job - automate
 # TODO: whitelist by gilded,subreddit,content,score,awards
-# TODO: delete
-# TODO: submissions
-# TODO: Redo Interface
+# TODO: delete submissions
 
 class Cleaner:
     def __init__(self):
-        reddit = praw.Reddit(client_id=config.get("connection", "client_id"),
-                             client_secret=config.get("connection", "client_secret"),
-                             password=config.get("connection", "password"),
-                             user_agent=config.get("connection", "user_agent"),
-                             username=config.get("connection", "username"))
+        self.reddit = praw.Reddit(client_id=config.get("connection", "client_id"),
+                                  client_secret=config.get("connection", "client_secret"),
+                                  password=config.get("connection", "password"),
+                                  user_agent=config.get("connection", "user_agent"),
+                                  username=config.get("connection", "username"))
+
     @staticmethod
     def get_comments(username):
         link = ("https://api.pushshift.io/reddit/search/comment/?author=" + username)
@@ -31,7 +29,7 @@ class Cleaner:
         newMessage = "new comment here"
         comment.edit(newMessage)
 
-    def delete_coments(self,link):
+    def delete_coments(self, link):
         comment = self.reddit.comment(id=link)
         comment.delete()
 
@@ -43,18 +41,23 @@ class Cleaner:
         csvwriter.writerow(values)
         comment_data.close()
 
-    @staticmethod
-    def white_list():
+    def white_list(self, link):
         # 'created' distinguished, gilded, score subreddit/#subreddit_id gilded #gildings
+        comment = self.reddit.comment(id=link)
+        subreddit = comment.subreddit
+        distinguished = comment.distinguished
+
+        print(comment.distinguished)
         pass
 
     def edit_bulk_comments(self, username):
         comments = self.get_comments(username)
-        length = len(comments)
-        print(length)
+        list = []
         for data in comments:
-            print(data['id'])
+            list.append(str(data))
             self.export_comment(data)
+        return list
 
 
+x = Cleaner()
 
