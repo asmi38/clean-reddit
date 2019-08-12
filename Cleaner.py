@@ -10,6 +10,7 @@ config.read("config.ini")
 # TODO: whitelist by gilded,subreddit,content,score,awards
 # TODO: delete
 # TODO: submissions
+# TODO: Redo Interface
 
 class Cleaner:
     def __init__(self):
