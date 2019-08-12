@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>393</width>
+    <height>422</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">alternate-background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 0, 0, 255), stop:0.339795 rgba(255, 0, 0, 255), stop:0.339799 rgba(255, 255, 255, 255), stop:0.662444 rgba(255, 255, 255, 255), stop:0.662469 rgba(0, 0, 255, 255), stop:1 rgba(0, 0, 255, 255));
+background-color: rgb(255, 255, 255);</string>
+  </property>
+  <widget class="QPlainTextEdit" name="plainTextEdit">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>100</y>
+     <width>221</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 10pt &quot;Montserrat&quot;;</string>
+   </property>
+   <property name="plainText">
+    <string>Username</string>
+   </property>
+   <property name="backgroundVisible">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>50</y>
+     <width>241</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 18pt &quot;Montserrat&quot;;
+background-color: rgba(255, 255, 255, 0);</string>
+   </property>
+   <property name="text">
+    <string>Reddit Cleaner</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>-90</y>
+     <width>1021</width>
+     <height>521</height>
+    </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>1021</width>
+     <height>521</height>
+    </size>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>../../../Desktop/istockphoto-486911324-612x612.jpg</pixmap>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>152</y>
+     <width>221</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#pushButton {
+   color: white;
+   background-color: #48c9b0;
+   border-color: #48c9b0;
+   display: inline-block;
+   text-align: center;
+   white-space: nowrap;
+   vertical-align: middle;
+   box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
+   font-size: 15px;
+   font-weight: normal;
+   line-height: 1.4;
+   border-radius: 4px;
+   padding: 10px 15px;
+   -webkit-font-smoothing: subpixel-antialiased;
+   transition: border .25s linear, color .25s linear, background-color .25s linear;
+}
+
+QPushButton#pushButton:hover {
+    background-color: rgb(224, 255, 0);
+}
+
+QPushButton#pushButton:pressed {
+    background-color: rgb(224, 0, 0);
+}</string>
+   </property>
+   <property name="text">
+    <string>Lets Go</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="textEdit">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>210</y>
+     <width>221</width>
+     <height>171</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(255, 255, 255, 100);</string>
+   </property>
+  </widget>
+  <zorder>label_2</zorder>
+  <zorder>plainTextEdit</zorder>
+  <zorder>label</zorder>
+  <zorder>pushButton</zorder>
+  <zorder>textEdit</zorder>
+ </widget>
+ <resources>
+  <include location="../../../Desktop/test.qrc"/>
+ </resources>
+ <connections/>
+</ui>
